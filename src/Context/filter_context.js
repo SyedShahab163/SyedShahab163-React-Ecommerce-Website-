@@ -11,9 +11,10 @@ const initialState = {
   grid_view: true,
   sorting_value: "lowest",
   filters: {
-    text: "",
+    text: " ",
     category:"all",
     company: "all",
+    color: "all",
   }
 
 };
@@ -47,18 +48,24 @@ export const FilterContextProvider = ({ children }) => {
      };
 
      useEffect(() => {
-       dispatch({type: "FILTER_PRODUCTS"});
-       dispatch({ type: "SHORTING_PRODUCTS" });
-    }, [products ,state.sorting_value,  state.filters]);
+      dispatch({ type: "FILTER_PRODUCTS" });
+      dispatch({ type: "SORTING_PRODUCTS" });
+    }, [products, state.sorting_value, state.filters]); 
 
-  useEffect(() => {
-    dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
-  }, [products]);
+    useEffect(() => {
+      dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
+    }, [products]);
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setListView ,setGridView, sorting,updateFiltersValue }}>
-      {children}
+    value={{
+      ...state,
+      setGridView,
+      setListView,
+      sorting,
+      updateFiltersValue,
+    }}>
+    {children}
     </FilterContext.Provider>
   );
 };

@@ -8,13 +8,13 @@ const FilterContext = createContext();
 const initialState = {
   filter_products: [],
   all_products: [],
-  grid_view: true,
+  grid_view: false,
   sorting_value: "lowest",
   filters: {
     text: " ",
     category:"all",
     company: "all",
-    color: "all",
+    colors: "all",
   }
 
 };

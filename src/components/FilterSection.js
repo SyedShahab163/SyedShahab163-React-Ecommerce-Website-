@@ -14,16 +14,13 @@ const FilterSection = () => {
   // to get the unique data of  each fileds
    const getUniqueData = (data, attr) => {
 let newVal = data.map((curElem) => {
-  return curElem[Attr];
+  return curElem[attr];
   });
   if(attr === "colors") {
-     return (newVal = ["All", ...new Set([].concat(...Array))]);
+     return (newVal = ["All", ...new Set([].concat(...attr))]);
     // newVal = newVal.flat();
-  } else {
-    return (newVal = ["All", ...new Set(newVal)]);
   }
-  
-  
+  return (newVal = ["All", ...new Set(newVal)]);
 };
 const categoryData = getUniqueData(all_products, "category");
 const companyData = getUniqueData(all_products, "company");
@@ -83,7 +80,7 @@ return (
       </form>
     </div>
 
-    <div className="filter-colors colors">
+     <div className="filter-colors colors">
       <h3>Colors</h3>
 
       <div className="filter-color-style">
@@ -94,15 +91,15 @@ return (
               type="button"
               value={curColor}
               name="colors"
-              style={{ backgroundColor: curColor }}
+              style={{ backgroundColors: curColor }}
               className="btnStyle"
               onClick={updateFiltersValue}>
               {colors === curColor ? "" : null}
             </Button>
           );
-        })}
-      </div>
-    </div>
+        })} 
+       </div> 
+     </div> 
   </Wrapper>
 );
 };
